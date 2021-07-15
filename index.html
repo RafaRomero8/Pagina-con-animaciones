@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="animacion.css">
+    <title>Document</title>
+    
+</head>
+<body>
+    <div class="page">
+        <!--Main Content-->
+        <section class="container">
+              <nav class="navbar">
+                  <div class="navbar__content">
+                      <img src="img/lego.png" alt="logo de lego">
+                      <ul>
+                          <li><a href="#">Exclusivos</a></li>
+                          <li><a href="#">Nuevos</a></li>
+                          <li><a href="#">GIFT Cards</a></li>
+                          <li><a href="#">Find a storie</a></li>
+                      </ul>
+                  </div>
+              </nav>
+
+              <section class="main-content">
+                  <p>Diseño tu</p>
+                  <h1>Súper Héroe!</h1>
+                  <p>Lorem ipsum dolor sit amet consectetur
+                   adipisicing elit. Molestias tempora pariatur
+                   maxime. Laboriosam, aperiam inventore neque quasi esse laudantium cumque, distinctio, 
+                   illo praesentium magni quam laborum quae quo deleniti nobis.</p>
+              </section>
+
+              <section class="side-content">
+                <div></div>
+                  <p>Batman</p>
+                  <img src=" https://www.nicepng.com/png/full/37-371303_picture-black-and-white-download-png-for-free.png" alt="superman">
+                 <!-- https://i.ibb.co/x16pz1x/super-man.png-->
+              </section>
+              
+              <section class="footer">
+                  <div  id="button1"><!--el id es para interactuar con el DOM en JS-->
+                      <img src="https://i.ibb.co/tKWqw8J/spiderman.png" alt="spiderman">
+                  </div>
+                  <div id="button2">
+                    <img src="https://i.ibb.co/Xzsdvgg/robin.png" alt="robin">
+                </div>
+                <div class="super" id="button3">
+                    <img src="https://i.ibb.co/x16pz1x/super-man.png" alt="superman">
+                </div>
+              </section>
+        </section>
+
+        <section class="loader">
+            <div></div>
+            <div></div>
+            <div></div>
+        </section>
+        <!--Modal-->
+        <section class="modal hidden">
+            <!--colocar un contenedor para los elemntos del hidden-->
+            <div class="modal__content">
+                <img class="modal-content__close" src="/img/macos-close.png" alt="">
+                 <div class="modal__content--slider">
+                     <input type="radio" name="slider-1" id="radio-1" checked><!--va estar chequeado por defecto-->
+                     <input type="radio" name="slider-1" id="radio-2">
+                     <input type="radio" name="slider-1" id="radio-3">
+                     
+                     <div class="cards">
+                         <label for="radio-1" id="card-1" class="card"> 
+                             <img src="/img/spider-man-1.png" alt="">
+                         </label><!--para el radio-1 el id que pusimos en los inputs-->
+                         <label for="radio-2" id="card-2" class="card">
+                            <img src="/img/spider-man-2.png" alt="">
+                        </label><!--para el radio-1 el id que pusimos en los inputs-->
+                        <label for="radio-3" id="card-3" class="card">
+                            <img src="/img/spider-man_3.png" alt="">
+                        </label><!--para el radio-1 el id que pusimos en los inputs-->
+                        
+                     </div>
+                  
+                 </div>
+                 <button class="modal-content__button">Lo quiero!</button>
+            </div>
+
+        </section>
+    </div>
+<script src="animacion.js"></script>
+    
+</body>
+</html>

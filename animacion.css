@@ -1,0 +1,429 @@
+:root {
+  --yellow: #ffd602;
+  --red: #d5040a; /*variables*/
+  --blue: #036cb6;
+}
+@import url(https://fonts.googleapis.com/css2?family=Lato:wght@100;300;700&display=swap);
+
+body {
+  height: 100vh; /*por defecto el body tiene un whid del 100% perono un height*/
+  margin: 0;
+  overflow: hidden; /*decirle que ningunn elemnto se salga de la  pantalla*/
+  font-family: "Lato", sans-serif;
+}
+
+.page {
+  position: relative;
+  height: 100vh;
+  width: 100%; /*no es obligatorio poner el widht*/
+}
+
+.container {
+  position: absolute;
+  z-index: 1;
+
+  display: grid;
+  grid-template-columns: 55% 45%; /*dividir en dos columnas 55%para la primera y 45% la segunda*/
+  grid-template-rows: 20% 50% 30%; /*dividir en filas(3 filas)*/
+  grid-template-areas:
+    "nav      aside" /*crear areas que se llman nav y aside etc*/
+    "section  aside" /*se crean los nombres de las areas*/
+    "footer   aside";
+  height: 100%;
+  width: 100%;
+}
+.navbar {
+  grid-area: nav; /*para que se quede en el area que le digamos(nombre que le pusimos) */
+  display: flex;
+}
+.navbar__content {
+  display: flex;
+  align-items: center; /*alinear elemntos al centro*/
+  width: 100%;
+  padding: 0 0 0 80px;
+  animation: 2.5s navbar 0.5s ease-in-out; /*tiempo de animacion,nombre de animacion,duracion de la animacion,aceleracion y que suceda despues de que el 
+  louder se ejecuta(las bolitas*/
+  margin-top: 10px;
+}
+@keyframes navbar {
+  /*que halla una transformacion de una parte supeiror a una inferior*/
+  0% {
+    /*en el momento 0*/
+
+    transform: translateY(-200px); /*en eje vertical de arriba a bajo*/
+  }
+  100% {
+    transform: translateY(0px); /*estado final*/
+  }
+}
+.navbar__content img {
+  width: 50px;
+}
+.navbar__content ul {
+  display: flex;
+  justify-content: space-evenly; /*espacio entre los elementos*/
+  list-style: none;
+  padding: 0; /*quitar padding que viene po defecto de los ul*/
+  width: 450px;
+  list-style: none;
+}
+.navbar__content ul li a {
+  text-decoration: none;
+  font-weight: 300;
+  color: var(--red);
+}
+.main-content {
+  display: flex;
+  grid-area: section; /*bajar la seccion llamada section,abajo del menu*/
+  flex-direction: column; /*para que se ponga abajo del otro*/
+  justify-content: center;
+  padding: 80px;
+
+  animation: 2.5s main-content 0.5s ease-in-out;
+}
+
+.main-content p:first-child {
+  /*decirle que queremos solo modificaar la primera p(con la pseudoclase first-child)*/
+  font-size: 36px;
+  font-weight: 300;
+  /*margin: 0; quitar margen por defecto de las p*/
+  margin: 0 0 -14px 44px;
+  width: 60%;
+}
+
+.main-content h1 {
+  font-size: 48px;
+  font-weight: 700;
+  margin: 0 0 28px 0px;
+}
+
+.main-content p:last-child {
+  font-weight: 300;
+  margin: 0;
+}
+
+@keyframes main-content {
+  /*que halla una transformacion de una parte supeiror a una inferior*/
+  0% {
+    /*en el momento 0*/
+
+    transform: translateY(-600px); /*en eje vertical de arriba a bajo*/
+  }
+  100% {
+    transform: translateY(0px); /*estado final*/
+  }
+}
+
+.side-content {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /*contendra 6 columns y el tamaño*/
+  align-items: center;
+  grid-area: aside; /*el nombre del area o a un elemento para que pueda ser ubicasdo en una grid
+  creadad con la propiedad grid_template-areas*/
+}
+
+.side-content p {
+  transform: rotate(
+    -90deg
+  ); /*para que el p se gire en 90°(donde dice superman)*/
+  font-size: 36px;
+
+  grid-row: 1 / 2; /*para que se ubique en una fila(que empiece en la linea 1 y termine en la linea 2*/
+  grid-column: 1 / 2; /*que empiece en columna 1 y termine en columna 2*/
+
+  opacity: 0;
+
+  animation-name: side-content-text;
+  animation-duration: 0.5s;
+  animation-delay: 2.5s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+@keyframes side-content-text {
+  0% {
+    /*estado inicial*/
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.side-content img {
+  /*se ubicara en la segunda columna delgrid*/
+  width: 100%;
+  grid-column: 2 / 7; /*ocupara el esacio la imagen entre la columna 2 y 6*/
+  grid-row: 1 / 2; /*entre la fila 1 y 2*/
+  animation: 2s side-content-img 1.5s ease-in-out;
+}
+
+@keyframes side-content-img {
+  /*arriba hacia abajo*/
+  100% {
+    transform: translateY(0px);
+  }
+  0% {
+    transform: translateY(-600px);
+  }
+  /*
+  para la animacion en horizontal(de derecha a izquierda
+   0% {
+    transform: translateX(600px); 
+  }
+  100% {
+    transform: translateX(0px); 
+               
+  }
+  
+  */
+}
+
+.side-content div {
+  /*division de colores del grid amarillo y blanco*/
+  background: var(--yellow);
+  grid-column: 4 / 7;
+  grid-row: 1 / 2;
+  height: 100%;
+  /*checar como colocamos las etiquetas en el html*/
+}
+
+.footer {
+  display: flex; /*para alinear los elemntos que estan adentro(las imagenes)*/
+  justify-content: space-evenly;
+  align-items: flex-end; /*para que los elementos empiecen desde el botoom hacia arriba*/
+  background: var(--yellow);
+  border-radius: 0 80px 0 0;
+
+  transform: translateY(100%); /*decirle al .footer que empiece*/
+  animation-name: footer;
+  animation-duration: 0.5s;
+  animation-delay: 3.5s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+@keyframes footer {
+  0% {
+    transform: translateY(100%); /*100% es el tamaño del contenedor*/
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.footer div {
+  background-color: var(--blue);
+  width: 160px;
+  height: 50%;
+  border-radius: 20px 20px 0 0;
+  display: flex;
+  justify-content: center;
+}
+
+.footer div:hover img {
+  /*cundo hagamos div en el hover va a suceder algo en la imagen*/
+  cursor: pointer;
+  transform: translateY(-20px) scale(1.1); /*para que se mueva hacia arriba scale para que no cresca mucho*/
+  transition: transform 0.3s ease-in-out;
+}
+.footer div img {
+  width: 160px;
+  position: absolute;
+  bottom: 25px;
+  transform: translateY(0px) scale(1); /*regresara a la poscion inicial*/
+  transition: transform 0.5s ease-in-out;
+}
+.footer .super img {
+  width: 110px;
+  position: absolute;
+  bottom: 20px;
+}
+
+.loader {
+  background: var(--yellow);
+  width: 100%;
+  height: 100%;
+  display: flex; /*alinear elemntos vertical y horizontalmente*/
+  align-items: center; /*alinear elemntos vertical y horizontalmente*/
+  justify-content: center; /*alinear elemntos vertical y horizontalmente*/
+  position: absolute;
+  z-index: 3;
+  animation: loader 2s linear forwards; /*animacion para que se que  por dos segundos*/
+  /*loader es un nombre que nosotros le queramos poner, 2 segundos  la celeracion*/
+}
+
+@keyframes loader {
+  /*se le agrega keyframes(para la animación) y el nombre que le pusimos*/
+  0% {
+    /*colocar los tiempos para saber que es lo que pasa de principio a fin con losdos segundos*/
+    opacity: 1;
+    visibility: visible;
+  }
+  95% {
+    opacity: 1;
+    visibility: visible;
+  } /*cuandopasa los dos segundos pasa al opacity 0*/
+  100% {
+    opacity: 0; /*para que se vea transparente*/
+    visibility: hidden;
+  }
+}
+
+.loader div {
+  /*clase padre y despues elemntos hijos*/
+
+  background: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; /*hacer bolita el div*/
+  margin: 10px; /*darle margen para que no quede n juntas*/
+  transform: scale(0); /*hacer la tranformacion de la bolita(esclar)*/
+  animation: scaling 2s ease-in-out infinite; /*animacion para hacer que cresca .duracion,, aceleracion y repetitiva(cuando termina  vuelva a comenzar el ciclo)*/
+}
+.loader div:nth-child(1) {
+  /*para que coja la primera bolita y la haga grande*/
+
+  animation-delay: 0.2s;
+}
+.loader div:nth-child(2) {
+  /*segunda bolita o div*/
+  animation-delay: 0.4s;
+}
+.loader div:nth-child(3) {
+  /*tercera bolita o div*/
+  animation-delay: 0.6s;
+}
+
+@keyframes scaling {
+  /*hacer unatransformacion en la bolita que sea mas peuqeña y despues garnde*/
+  0%,
+  100% {
+    /*tanto para el 0% como el 100% se le agrega  el fragmento de codigo(transform:sclae(0.2))*/
+    transform: scale(0.2);
+  }
+  40% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1);
+  }
+}
+
+.hidden {
+  /*clase para ocultar el .modal*/
+  display: none !important; /*el important es para que tenga mas importancia */
+}
+
+.visible {
+  /*para que muestre el .modal*/
+  display: grid !important; /*para alinera elementos en el centro*/
+}
+
+.modal {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  z-index: 4; /*para que no este en el fondo este adelante*/
+  display: grid; /*para centrar el elemento*/
+  place-items: center; /*centra los elemntos tanto vertical como horizontal*/
+}
+
+.modal__content {
+  background-color: white;
+
+  position: relative;
+  width: 30%;
+  height: 50%;
+  display: grid; /*para que se ponga en el centro el contenedor*/
+  place-items: center;
+}
+
+.modal-content__close {
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.modal-content__button {
+  background-color: var(--red);
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+  width: 150px;
+  padding: 10px;
+  border-radius: 10px;
+}
+/*carousel*/
+.modal__content--slider {
+  width: 300px;
+  height: 200px;
+  transform-style: preserve-3d; /*efecto 3d para las cards para que se vea una detras de la otra*/
+  margin-bottom: 60px;
+}
+
+/*
+background: var(--red);
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 20px;
+    width: 240px;*/
+
+.modal__content--slider #radio-1,
+#radio-2,
+#radio-3 {
+  display: none;
+}
+.cards {
+  position: relative;
+  width: 100%; /**/
+  height: 100%;
+}
+.card {
+  /*dando estilos a las cards*/
+  background-color: var(--yellow);
+  position: absolute; /*para adherirla al contenedor*/
+  height: 100%; /*agregar height y width para que se vean*/
+  width: 50%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  transition: transform 0.5s ease;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+.card img {
+  width: 100%;
+}
+/*inputs*/
+
+#radio-1:checked ~ .cards #card-1,
+#radio-2:checked ~ .cards #card-2,
+#radio-3:checked ~ .cards #card-3 {
+  /*a uno de los hijos(#card-1) de cards se le dara un estilo*/
+  transform: translateX(0) scale(1); /*se translado en la posicion 0 la carta numero uno se quede en el centro scale(1)-->para hacerlo chico */
+  opacity: 1;
+  z-index: 1;
+}
+
+#radio-1:checked ~ .cards #card-2,
+#radio-2:checked ~ .cards #card-3,/*para que al selecionar ya sea a lado izquierdo o derecho una carta */
+#radio-3:checked ~ .cards #card-1 {
+  /*para que las cartas se transladen*/
+  /*a uno de los hijos(#card-1) de cards se le dara un estilo*/
+  transform: translateX(40%) scale(0.8); /*se translado en la posicion 0 la carta numero uno se quede en el centro scale(1)-->para hacerlo chico */
+  opacity: 0.5;
+  z-index: 0;
+}
+#radio-1:checked ~ .cards #card-3,
+#radio-2:checked ~ .cards #card-1,
+#radio-3:checked ~ .cards #card-2 {
+  /*a uno de los hijos(#card-1) de cards se le dara un estilo*/
+  transform: translateX(-40%) scale(0.8); /*se translado en la posicion 0 la carta numero uno se quede en el centro scale(1)-->para hacerlo chico */
+  opacity: 0.5;
+  z-index: 0;
+}
